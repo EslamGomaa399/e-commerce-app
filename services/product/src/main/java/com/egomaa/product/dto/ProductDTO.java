@@ -20,9 +20,6 @@ public class ProductDTO {
     @NotNull(message = "Product description is required")
     private String description;
 
-    @Positive(message = "Available quantity should be positive")
-    private Long availableQuantity;
-
     @Positive(message = "Product price should be positive")
     private BigDecimal price;
 

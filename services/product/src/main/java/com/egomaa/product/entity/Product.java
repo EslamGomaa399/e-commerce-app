@@ -26,8 +26,6 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "available_quantity")
-    private Long availableQuantity;
 
     @Column(name = "price")
     private BigDecimal price;

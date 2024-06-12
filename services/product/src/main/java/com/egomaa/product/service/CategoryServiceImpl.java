@@ -22,7 +22,8 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         Category category = mapper.map(categoryDTO, Category.class);
-        return mapper.map(category, CategoryDTO.class);
+        Category savedCategory = categoryRepository.save(category);
+        return mapper.map(savedCategory, CategoryDTO.class);
     }
 
     @Override
@@ -50,11 +51,12 @@ public class CategoryServiceImpl implements CategoryService{
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with id " + id));
 
-        mapper.map(categoryDTO, Category.class);
+        category.setName(categoryDTO.getName());
+        category.setDescription(categoryDTO.getDescription());
 
-        Category savedCategory = categoryRepository.save(category);
+        categoryRepository.save(category);
 
-        return mapper.map(savedCategory, CategoryDTO.class);
+        return mapper.map(category, CategoryDTO.class);
     }
 
     @Override
