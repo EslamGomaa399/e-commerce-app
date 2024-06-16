@@ -17,7 +17,8 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductDTO> createProduct(@Valid
+                                                    @RequestBody ProductDTO productDTO) {
         ProductDTO createdProduct = productService.createProduct(productDTO);
         return new ResponseEntity<>(createdProduct,HttpStatus.CREATED);
     }
@@ -47,7 +48,6 @@ public class ProductController {
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
 
 }

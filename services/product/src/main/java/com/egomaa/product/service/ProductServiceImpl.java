@@ -3,6 +3,7 @@ package com.egomaa.product.service;
 import com.egomaa.product.dto.ProductDTO;
 import com.egomaa.product.entity.Category;
 import com.egomaa.product.entity.Product;
+import com.egomaa.product.exception.DuplicateElement;
 import com.egomaa.product.exception.ResourceNotFoundException;
 import com.egomaa.product.repository.CategoryRepository;
 import com.egomaa.product.repository.ProductRepository;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.DuplicateFormatFlagsException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -69,7 +71,10 @@ public class ProductServiceImpl implements ProductService{
         // Update the existing product instance
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
-        product.setPrice(productDTO.getPrice());
+        product.setUnitPrice(productDTO.getUnitPrice());
+//        product.setSkuCode(productDTO.getSkuCode());
+//        product.setImageUrl(productDTO.getImageUrl());
+
         product.setCategory(category);
 
         Product savedProduct = productRepository.save(product);

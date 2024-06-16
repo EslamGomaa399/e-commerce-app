@@ -1,10 +1,12 @@
 package com.egomaa.product.dto;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +23,11 @@ public class ProductDTO {
     private String description;
 
     @Positive(message = "Product price should be positive")
-    private BigDecimal price;
+    private BigDecimal unitPrice;
+
+    private Date dateCreated;
+
+    private Date lastUpdated;
 
     private Long categoryId;
 
