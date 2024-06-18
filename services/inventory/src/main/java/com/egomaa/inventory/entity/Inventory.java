@@ -1,4 +1,4 @@
-package com.egomaa.order.Entity;
+package com.egomaa.inventory.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,23 +6,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "inventory")
+public class Inventory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String orderNumber;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrderLineItems> orderLineItems;
-
+    private String skuCode;
+    private Long quantity;
 
 }
